@@ -14,13 +14,22 @@
     <h1>PTT_USER_NAME</h1>
     
     
-    <form action="./" method="get">
+    <form class="form-inline" role="form" action="./" method="get">
         
         <div class="form-group">
-          <label for="exampleInputEmail1">請輸入要調查的ptt帳號</label>
-          <input type="text" class="form-control" id="user_name" name="user_name">
-          <label for="exampleInputEmail1">關鍵字</label>
-          <input type="text" class="form-control" id="msg_like" name="msg_like">
+          
+            <label for="exampleInputEmail1">
+                <p class="font-weight-bold">ptt帳號:</p>
+            </label>
+            
+            <input type="text" class="form-control" id="user_name" name="user_name">
+            
+            <label for="exampleInputEmail1">
+                <p class="font-weight-bold">關鍵字:</p>
+            </label>
+            
+            <input type="text" class="form-control" id="msg_like" name="msg_like">
+          
         </div>
         
         <button type="submit" class="btn btn-primary">送出</button>
@@ -42,7 +51,9 @@
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
                     <td> {{ msg.0 }} </td>
-                    <td> <a href= '{{msg.2}}' target="_blank" class="text-white bg-dark"> {{msg.1}} </a> </td>
+                    <td> <a href= '{{msg.2}}' target="_blank" class="text-white bg-dark"> 
+                        <span class="badge badge-secondary">{{msg.4}}</span>
+                        {{msg.1}} </a> </td>
                     <td> {{ msg.3 }} </td>
 
                 </tr>

@@ -4,7 +4,7 @@ def ptt_user_name(user_name:str, msg_like:str=None) -> str :
     db = db_operation()
     
     search_user_msg_sql=" \
-    SELECT msg_2.msg, article.article_title, article.article_url,msg_2.msg_time \
+    SELECT msg_2.msg, article.article_title, article.article_url,msg_2.msg_time,article.nrec \
     FROM test_user, msg_2, article \
     WHERE test_user.user_name = %s \
     AND msg_2.msg LIKE %s \
@@ -24,7 +24,8 @@ def ptt_user_name(user_name:str, msg_like:str=None) -> str :
     db.colse()
     return result
     
-    
+def key_word_group_by_user():
+    pass
     
     
     

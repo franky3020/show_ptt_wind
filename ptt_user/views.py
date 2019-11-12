@@ -11,10 +11,12 @@ def user_name_page(request):
     
     if 'user_name' in request.GET:
         if('msg_like' in request.GET):
+            
             if request.GET['msg_like'] != "":
                 msg_like = request.GET['msg_like']
             else:
-                msg_like = None
+                msg_like = None 
+                
         else:
             msg_like = None
         
@@ -24,6 +26,9 @@ def user_name_page(request):
         
     else:
         return render(request, 'user_name_page.html')
+
+def key_word_search(request):
+    pass
         
 
 
