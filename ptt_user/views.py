@@ -4,31 +4,37 @@ from django.http import HttpResponse
 from datetime import datetime
 
 from .mysql_select_from_ptt import ptt_user_name
+from .mysql_select_from_ptt import ptt_user_name_and_msg
+from .mysql_select_from_ptt import ptt_msg_search
 
 
 
 def user_name_page(request):
     
-    if 'user_name' in request.GET:
-        if('msg_like' in request.GET):
-            
-            if request.GET['msg_like'] != "":
-                msg_like = request.GET['msg_like']
-            else:
-                msg_like = None 
-                
-        else:
-            msg_like = None
-        
+    if 'user_name' in request.GET and 'msg_like' not in request.GET :
         return render(request, 'user_name_page.html', {
-        'msg_list': ptt_user_name(request.GET['user_name'],msg_like),
+        'msg_list': ptt_user_name(request.GET['user_name']),
+        })
+    
+    elif 'user_name' in request.GET and 'msg_like' in request.GET:
+        return render(request, 'user_name_page.html', {
+        'msg_list': ptt_user_name_and_msg(request.GET['user_name'],request.GET['msg_like']),
         })
         
     else:
         return render(request, 'user_name_page.html')
+    
 
-def key_word_search(request):
-    pass
+def ptt_msg_search_engine_page(request):
+    
+    if 'msg_like' in request.GET :
+        return render(request, 'msg_search_engine.html', {
+        'msg_list': ptt_msg_search(request.GET['msg_like']),
+        'msg_like' : request.GET['msg_like'],
+        })
+        
+    else:
+        return render(request, 'msg_search_engine.html')
         
 
 

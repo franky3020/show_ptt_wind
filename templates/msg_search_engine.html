@@ -8,10 +8,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <title>PTT_USER_NAME!</title>
+    <title>MSG SEARCH ENGINE!!</title>
   </head>
   <body class = "bg-dark text-white">
-    <h1>PTT_USER_NAME</h1>
+    <h1>MSG SEARCH ENGINE!!</h1>
     
     
     <form class="form-inline" role="form" action="./" method="get">
@@ -19,15 +19,8 @@
         <div class="form-group">
           
             <label for="exampleInputEmail1">
-                <p class="font-weight-bold">ptt帳號:</p>
+                <p class="font-weight-bold">留言關鍵字:</p>
             </label>
-            
-            <input type="text" class="form-control" id="user_name" name="user_name">
-            
-            <label for="exampleInputEmail1">
-                <p class="font-weight-bold">關鍵字:</p>
-            </label>
-            
             <input type="text" class="form-control" id="msg_like" name="msg_like">
           
         </div>
@@ -40,6 +33,7 @@
         <thead>
           <tr>
               <th scope="col">#</th>
+              <th scope="col">帳號</th>
               <th scope="col">留言</th>
               <th scope="col">文章</th>
               <th scope="col">時間</th>
@@ -50,11 +44,14 @@
             {% for msg in msg_list %}
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td> {{ msg.0 }} </td>
-                    <td> <a href= '{{msg.2}}' target="_blank" class="text-white bg-dark"> 
-                        <span class="badge badge-secondary">{{msg.4}}</span>
-                        {{msg.1}} </a> </td>
-                    <td> {{ msg.3 }} </td>
+                    <td> 
+                        <a href= '../user_name_page/?user_name={{ msg.0 }}&msg_like={{ msg_like }}' target="_blank" class="text-white bg-dark"> {{ msg.0 }}  </a>
+                    </td>
+                    <td> {{ msg.1 }} </td>
+                    <td> <a href= '{{msg.4}}' target="_blank" class="text-white bg-dark"> 
+                        <span class="badge badge-secondary">{{msg.2}}</span>
+                        {{msg.3}} </a> </td>
+                    <td> {{ msg.5 }} </td>
 
                 </tr>
             {% endfor %}
