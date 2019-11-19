@@ -10,6 +10,7 @@ def ptt_user_name(user_name:str) -> str :
     AND msg_2.user_id_fk = test_user.id \
     AND article.id = msg_2.article_id_fk \
     ORDER BY msg_2.msg_time DESC \
+    LIMIT 100 \
     "
     args = (user_name)
     
@@ -30,6 +31,7 @@ def ptt_user_name_and_msg(user_name:str, msg_like:str) -> str :
     AND msg_2.user_id_fk = test_user.id \
     AND article.id = msg_2.article_id_fk \
     ORDER BY msg_2.msg_time DESC \
+    LIMIT 100 \
     "
     
     args = (user_name, "%"+msg_like+"%")
@@ -51,7 +53,7 @@ def ptt_msg_search(msg_like:str) -> str :
     AND msg_2.user_id_fk = test_user.id \
     AND article.id = msg_2.article_id_fk \
     ORDER BY msg_2.msg_time DESC \
-    LIMIT 1000 \
+    LIMIT 100 \
     "
     args = ("%"+msg_like+"%")
  

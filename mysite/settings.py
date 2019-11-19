@@ -25,7 +25,7 @@ SECRET_KEY = 'glgqo_%j=zezeidn+u^0+d@k@#gmw3lc&qusn4v7)eia40s5^$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
