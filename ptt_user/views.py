@@ -35,6 +35,16 @@ def ptt_msg_search_engine_page(request):
         
     else:
         return render(request, 'msg_search_engine.html')
+
+from .mysql_select_from_ptt import count_keyword
+from django.http import JsonResponse
+def ptt_count_keyword_api(request)->JsonResponse:
+    c1 = 0
+    if 'msg_like' in request.GET and request.GET['msg_like'] !="":
+        c1 = count_keyword(request.GET['msg_like'])
+    return JsonResponse({'count':c1})
+    
+
         
 
 
