@@ -46,7 +46,7 @@ def ptt_count_keyword_api(request) -> JsonResponse:
     start_date = "2019/10/1 00:00:00"
     end_date = "2019/11/1 00:00:00"
     msg_over_count = 1
-    
+
     if 'msg_like' in request.GET and request.GET['msg_like'] !="":
         c1 = count_keyword(request.GET['msg_like'], start_date, end_date, msg_over_count)
         
