@@ -18,7 +18,7 @@ class Msg_key_word:
         
         return output_str
 
-    def get_sql_args(self)->tuple:
+    def get_sql_args(self)->list:
         key_word_list = self.key_word.copy()
         for i in range(len(key_word_list)):
             key_word_list[i] = "%" + key_word_list[i] + "%"
