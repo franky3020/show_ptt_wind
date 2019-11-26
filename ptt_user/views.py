@@ -42,17 +42,7 @@ def ptt_count_keyword_api(request)->JsonResponse:
     c1 = 0
     if 'msg_like' in request.GET and request.GET['msg_like'] !="":
         c1 = count_keyword(request.GET['msg_like'])
-<<<<<<< HEAD
     return JsonResponse({'count':c1})
-=======
-    
-    return JsonResponse({'count':c1})
-    # return render(request,'msg_search_engine.html')
-    # return render(request, 'msg_search_engine.html', {
-    # 'msg_list': ptt_msg_search(request.GET['msg_like']),
-    # 'msg_like' : request.GET['msg_like'],
-    # })
->>>>>>> master
     
 
         
