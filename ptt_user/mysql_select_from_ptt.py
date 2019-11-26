@@ -63,6 +63,30 @@ def ptt_msg_search(msg_like:str) -> str :
     db.colse()
     return result
 
+def count_keyword(msg_like:str) -> int :
+
+    db = db_operation()
+
+    count_keyword_sql = " \
+        SELECT COUNT(*) FROM( \
+        SELECT COUNT(test_user.user_name) FROM msg_2,test_user \
+        WHERE msg_2.msg LIKE %s \
+        AND msg_2.user_id_fk = test_user.id \
+        AND msg_2.msg_time > %s \
+        AND msg_2.msg_time < %s \
+        GROUP BY test_user.user_name \
+        HAVING COUNT(test_user.user_name) >= %s \
+        )d1 \
+        "
+        
+    args = ("%"+msg_like+"%", "2019/10/1 00:00:00", "2019/11/1 00:00:00","1")
+ 
+    db.execute(count_keyword_sql, args)
+    result = db.fetchall()
+    
+    db.colse()
+    return result[0][0]
+
 
 
 

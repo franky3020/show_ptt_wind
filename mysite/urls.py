@@ -17,10 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from ptt_user.views import user_name_page
 from ptt_user.views import ptt_msg_search_engine_page
+from ptt_user.views import ptt_count_keyword_api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user_name_page/', user_name_page),
     path('msg_search_engine/', ptt_msg_search_engine_page),
-    
+    path('test/',ptt_count_keyword_api),
 ]
