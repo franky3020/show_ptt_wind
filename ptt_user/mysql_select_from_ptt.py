@@ -115,6 +115,38 @@ def count_keyword(msg_like:str, start_date:str, end_date:str, msg_over_count:str
     db.colse()
     return result[0][0]
 
+def count_eachUser_keyword(msg_like:str, start_date:str, end_date:str, msg_over_count:str) -> list :
+    msg_list = msg_like.split()
+    if len(msg_list) == 0:# 檢查是否為空
+        return 0
+    
+    msg_key_word=Msg_key_word()
+    for msg in msg_list:
+        msg_key_word.add_keyWord(msg)
+    
+    sql_date_format = Sql_date_format(start_date, end_date)
+
+    count_keyword_sql = " \
+        SELECT test_user.user_name,COUNT(*) FROM msg_2,test_user \
+        WHERE " + msg_key_word.get_sql_str("msg_2.msg") + " \
+        AND msg_2.user_id_fk = test_user.id \
+        AND " + sql_date_format.get_sql_str("msg_2.msg_time") + " \
+        GROUP BY test_user.user_name \
+        HAVING COUNT(test_user.user_name) >= %s "
+        
+        
+    args = []
+    args.extend( msg_key_word.get_sql_args() )
+    args.extend( sql_date_format.get_sql_args() )
+    args.extend( [msg_over_count] )
+ 
+    db = db_operation()
+    db.execute(count_keyword_sql, tuple(args) )
+    result = db.fetchall()
+    
+    db.colse()
+    return result
+
 
 
 

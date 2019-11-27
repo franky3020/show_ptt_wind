@@ -51,4 +51,19 @@ def ptt_count_keyword_api(request) -> JsonResponse:
         c1 = count_keyword(request.GET['msg_like'], start_date, end_date, msg_over_count)
         
     return JsonResponse({'count':c1})
+
+from .mysql_select_from_ptt import count_eachUser_keyword
+def count_eachUser_keyword_page(request):
+    start_date = "2019/1/1 00:00:00"
+    end_date = "2019/12/31 00:00:00"
+    msg_over_count = 1
+
+    if 'msg_like' in request.GET and request.GET['msg_like'] !="":
+        user_and_count = count_eachUser_keyword(request.GET['msg_like'], start_date, end_date, msg_over_count)
+        return render(request, 'msg_count.html', {
+        'msg_list': user_and_count,
+        'msg_like' : request.GET['msg_like'],
+        })
+    else:
+        return render(request, 'msg_count.html')
     

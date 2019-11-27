@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>MSG SEARCH ENGINE!!</title>
+  </head>
+  <body class = "bg-dark text-white">
+    <h1>MSG SEARCH ENGINE!!</h1>
+    
+    
+    <form class="form-inline" role="form" action="./" method="get">
+        
+        <div class="form-group">
+          
+            <label for="exampleInputEmail1">
+                <p class="font-weight-bold">留言關鍵字:</p>
+            </label>
+            <input type="text" class="form-control" id="msg_like" name="msg_like">
+          
+        </div>
+        
+        <button type="submit" class="btn btn-primary">送出</button>
+    </form>
+    
+    
+    <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">帳號</th>
+              <th scope="col">留言次數</th>
+          </tr>
+        </thead>
+        <tbody>
+            
+            {% for msg in msg_list %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td> 
+                        <a href= '../user_name_page/?user_name={{ msg.0 }}&msg_like={{ msg_like }}' target="_blank" class="text-white bg-dark"> {{ msg.0 }}  </a>
+                    </td>
+                    <td> {{ msg.1 }} </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+      
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>

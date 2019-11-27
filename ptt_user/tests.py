@@ -5,6 +5,8 @@ from .mysql_select_from_ptt import count_keyword
 from .take_data_from_mysql.Msg_key_word import Msg_key_word
 from .take_data_from_mysql.Sql_date_format import Sql_date_format
 import os 
+from .mysql_select_from_ptt import count_eachUser_keyword
+
 class sqlTestCase(TestCase):
     def setUp(self):
         pass
@@ -24,8 +26,13 @@ class sqlTestCase(TestCase):
         date = Sql_date_format("2019/10/1 00:00:00", "2019/11/1 00:00:00")
         self.assertEqual(" " + "test_col" + " >= %s" + " AND " + "test_col" + " <= %s" + " " , date.get_sql_str("test_col"))
         self.assertEqual( ["2019/10/1 00:00:00", "2019/11/1 00:00:00"] , date.get_sql_args())
-       
-       
+
+    def test_user_say_word_time(self): 
+        start_date = "2019/10/1 00:00:00"
+        end_date = "2019/11/1 00:00:00"
+        msg_over_count = 1
+        result = count_eachUser_keyword("韓粉", start_date, end_date, msg_over_count)
+        print(result[1:10])
 
 
 
