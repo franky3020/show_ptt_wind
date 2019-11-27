@@ -23,5 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('user_name_page/', user_name_page),
     path('msg_search_engine/', ptt_msg_search_engine_page),
-    path('test/',ptt_count_keyword_api),
+    path('count_keyword/',ptt_count_keyword_api),      
 ]

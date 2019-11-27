@@ -52,7 +52,3 @@ def ptt_count_keyword_api(request) -> JsonResponse:
         
     return JsonResponse({'count':c1})
     
-
-        
-
-
