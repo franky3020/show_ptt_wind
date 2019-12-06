@@ -10,7 +10,7 @@ def ptt_user_name(user_name:str) -> str :
     AND msg_2.user_id_fk = test_user.id \
     AND article.id = msg_2.article_id_fk \
     ORDER BY msg_2.msg_time DESC \
-    LIMIT 100 \
+    LIMIT 2000 \
     "
     args = (user_name)
     
@@ -37,7 +37,7 @@ def ptt_user_name_and_msg(user_name:str, msg_like:str) -> str :
     AND msg_2.user_id_fk = test_user.id \
     AND article.id = msg_2.article_id_fk \
     ORDER BY msg_2.msg_time DESC \
-    LIMIT 100 \
+    LIMIT 2000 \
     "
     args = []
     args.append(user_name)
@@ -68,7 +68,7 @@ def ptt_msg_search(msg_like:str) -> str :
     AND msg_2.user_id_fk = test_user.id \
     AND article.id = msg_2.article_id_fk \
     ORDER BY msg_2.msg_time DESC \
-    LIMIT 100" \
+    LIMIT 2000" \
     
     args = msg_key_word.get_sql_args()
     
@@ -132,7 +132,9 @@ def count_eachUser_keyword(msg_like:str, start_date:str, end_date:str, msg_over_
         AND msg_2.user_id_fk = test_user.id \
         AND " + sql_date_format.get_sql_str("msg_2.msg_time") + " \
         GROUP BY test_user.user_name \
-        HAVING COUNT(test_user.user_name) >= %s "
+        HAVING COUNT(test_user.user_name) >= %s \
+        ORDER BY COUNT(test_user.user_name) DESC LIMIT 2000 \
+        "
         
         
     args = []
