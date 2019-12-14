@@ -10,25 +10,43 @@
 
     <title>MSG SEARCH ENGINE!!</title>
   </head>
+
+  <style>
+      p {
+          font-size: 150%;
+          vertical-align: middle;
+      }
+
+      th {
+          font-size: 160%;
+          font-weight: bold;
+      }
+
+      td {
+          font-size: 120%;
+      }
+
+  </style>
+
   <body class = "bg-dark text-white">
     <h1>MSG SEARCH ENGINE!!</h1>
-    
-    
+
     <form class="form-inline" role="form" action="./" method="get">
-        
         <div class="form-group">
-          
             <label for="exampleInputEmail1">
                 <p class="font-weight-bold">留言關鍵字:</p>
             </label>
-            <input type="text" class="form-control" id="msg_like" name="msg_like">
-          
+
+            <div class="col">
+                <label for="msg_like"></label><input type="text" class="form-control" id="msg_like" name="msg_like">
+            </div>
         </div>
         
-        <button type="submit" class="btn btn-primary">送出</button>
+        <div class="col">
+            <button type="submit" class="btn btn-primary">送出</button>
+        </div>
     </form>
-    
-    
+
     <table class="table table-striped table-dark">
         <thead>
           <tr>
@@ -39,8 +57,8 @@
               <th scope="col">時間</th>
           </tr>
         </thead>
+
         <tbody>
-            
             {% for msg in msg_list %}
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
@@ -49,16 +67,20 @@
                     </td>
                     <td> {{ msg.1 }} </td>
                     <td> <a href= '{{msg.4}}' target="_blank" class="text-white bg-dark"> 
-                        <span class="badge badge-secondary">{{msg.2}}</span>
+                        {% if msg.2 < 20 %}
+                            <span class="badge badge-secondary">{{msg.2}}</span>
+                        {% elif msg.2 >= 50 %}
+                            <span class="badge badge-danger">{{msg.2}}</span>
+                        {% elif msg.2 < 50 %}
+                            <span class="badge badge-warning">{{msg.2}}</span>
+                        {% endif %}
                         {{msg.3}} </a> </td>
                     <td> {{ msg.5 }} </td>
-
                 </tr>
             {% endfor %}
         </tbody>
+
       </table>
-      
-    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
