@@ -43,8 +43,8 @@ from .mysql_select_from_ptt import count_keyword
 from django.http import JsonResponse
 def ptt_count_keyword_api(request) -> JsonResponse:
     c1 = 0
-    start_date = "2019/10/1 00:00:00"
-    end_date = "2019/11/1 00:00:00"
+    start_date = "2019/1/1 00:00:00"
+    end_date = "2019/12/31 00:00:00"
     msg_over_count = 1
 
     if 'msg_like' in request.GET and request.GET['msg_like'] !="":

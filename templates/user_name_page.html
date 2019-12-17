@@ -60,24 +60,28 @@
     </nav>
     
     <form class="form-inline" role="form" action="./" method="get">
-        
+
         <div class="form-group">
-          
             <label for="exampleInputEmail1">
                 <p class="font-weight-bold">ptt帳號:</p>
             </label>
-            
-            <input type="text" class="form-control" id="user_name" name="user_name">
-            
+
+            <div class="col">
+                <input type="text" class="form-control" id="user_name" name="user_name">
+            </div>
+
             <label for="exampleInputEmail1">
                 <p class="font-weight-bold">關鍵字:</p>
             </label>
-            
-            <input type="text" class="form-control" id="msg_like" name="msg_like">
-          
+
+            <div class="col">
+                <input type="text" class="form-control" id="msg_like" name="msg_like">
+            </div>
         </div>
-        
-        <button type="submit" class="btn btn-primary">送出</button>
+
+        <div class="col">
+            <button type="submit" class="btn btn-primary">送出</button>
+        </div>
     </form>
     
     
@@ -90,8 +94,8 @@
               <th scope="col">時間</th>
           </tr>
         </thead>
+
         <tbody>
-            
             {% for msg in msg_list %}
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
@@ -106,10 +110,10 @@
                         {% endif %}
                         {{msg.1}} </a> </td>
                     <td> {{ msg.3 }} </td>
-
                 </tr>
             {% endfor %}
         </tbody>
+
       </table>
       
     
