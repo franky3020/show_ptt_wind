@@ -10,6 +10,27 @@
 
     <title>搜尋關鍵字</title>
   </head>
+
+  <style>
+      p {
+          font-size: 150%;
+          vertical-align: middle;
+      }
+
+      th {
+          font-size: 160%;
+          font-weight: bold;
+      }
+
+      td {
+          font-size: 120%;
+      }
+
+      .navbar-brand {
+          font-size: 28px;
+      }
+  </style>
+
   <body class = "bg-dark text-white">
     <h1>搜尋關鍵字</h1>
     <nav class="navbar navbar-dark bg-dark">
@@ -74,7 +95,13 @@
                     </td>
                     <td> {{ msg.1 }} </td>
                     <td> <a href= '{{msg.4}}' target="_blank" class="text-white bg-dark"> 
-                        <span class="badge badge-secondary">{{msg.2}}</span>
+                        {% if msg.2 < 20 %}
+                            <span class="badge badge-secondary">{{msg.2}}</span>
+                        {% elif msg.2 >= 50 %}
+                            <span class="badge badge-danger">{{msg.2}}</span>
+                        {% elif msg.2 < 50 %}
+                            <span class="badge badge-warning">{{msg.2}}</span>
+                        {% endif %}
                         {{msg.3}} </a> </td>
                     <td> {{ msg.5 }} </td>
 

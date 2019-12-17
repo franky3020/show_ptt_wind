@@ -10,6 +10,27 @@
 
     <title>搜尋使用者</title>
   </head>
+
+  <style>
+      p {
+          font-size: 150%;
+          vertical-align: middle;
+      }
+
+      th {
+          font-size: 160%;
+          font-weight: bold;
+      }
+
+      td {
+          font-size: 120%;
+      }
+
+      .navbar-brand {
+          font-size: 28px;
+      }
+  </style>
+
   <body class = "bg-dark text-white">
     <h1>搜尋使用者</h1>
     <nav class="navbar navbar-dark bg-dark">
@@ -76,7 +97,13 @@
                     <th scope="row">{{ forloop.counter }}</th>
                     <td> {{ msg.0 }} </td>
                     <td> <a href= '{{msg.2}}' target="_blank" class="text-white bg-dark"> 
-                        <span class="badge badge-secondary">{{msg.4}}</span>
+                        {% if msg.4 < 20 %}
+                            <span class="badge badge-secondary">{{msg.4}}</span>
+                        {% elif msg.4 >= 50 %}
+                            <span class="badge badge-danger">{{msg.4}}</span>
+                        {% elif msg.4 < 50 %}
+                            <span class="badge badge-warning">{{msg.4}}</span>
+                        {% endif %}
                         {{msg.1}} </a> </td>
                     <td> {{ msg.3 }} </td>
 
