@@ -26,8 +26,10 @@
           font-size: 120%;
       }
 
+      .navbar-brand {
+          font-size: 28px;
+      }
   </style>
-
 
   <body class = "bg-dark text-white">
     <h1>搜尋使用者</h1>
@@ -98,7 +100,7 @@
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
                     <td> {{ msg.0 }} </td>
-                    <td> <a href= '{{msg.2}}' target="_blank" class="text-white bg-dark">
+                    <td> <a href= '{{msg.2}}' target="_blank" class="text-white bg-dark"> 
                         {% if msg.4 < 20 %}
                             <span class="badge badge-secondary">{{msg.4}}</span>
                         {% elif msg.4 >= 50 %}
